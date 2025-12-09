@@ -1,0 +1,14 @@
+[Unit]
+Description=Streamlit PASC PRO Service
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/pasc_pro
+EnvironmentFile=/etc/pasc_pro.env
+ExecStart=/usr/local/bin/streamlit run /srv/pasc_pro/streamlit_app.py --server.port=8501 --server.address=127.0.0.1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

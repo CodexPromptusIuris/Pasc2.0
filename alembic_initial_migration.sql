@@ -1,0 +1,18 @@
+-- Initial migration for PASC PRO users and audits (SQLite/Postgres generic)
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  totp_secret VARCHAR(64) NOT NULL,
+  is_active BOOLEAN DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS audits (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  event VARCHAR(128),
+  remote_addr VARCHAR(45),
+  user_agent VARCHAR(512),
+  details TEXT,
+  hmac VARCHAR(128)
+);

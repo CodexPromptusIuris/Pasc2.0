@@ -1,0 +1,9 @@
+PASC_SECRET_KEY={{ with secret "secret/data/pasc" }}{{ .Data.data.PASC_SECRET_KEY }}{{ end }}
+PASC_HMAC_KEY={{ with secret "secret/data/pasc" }}{{ .Data.data.PASC_HMAC_KEY }}{{ end }}
+DATABASE_URL={{ with secret "secret/data/pasc" }}{{ .Data.data.DATABASE_URL }}{{ end }}
+MAIL_SERVER={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_SERVER }}{{ end }}
+MAIL_PORT={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_PORT }}{{ end }}
+MAIL_USERNAME={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_USERNAME }}{{ end }}
+MAIL_PASSWORD={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_PASSWORD }}{{ end }}
+MAIL_USE_TLS={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_USE_TLS }}{{ end }}
+MAIL_DEFAULT_SENDER={{ with secret "secret/data/pasc" }}{{ .Data.data.MAIL_DEFAULT_SENDER }}{{ end }}

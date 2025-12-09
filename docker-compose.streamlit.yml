@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: pasc
+      POSTGRES_PASSWORD: pasc_pass
+      POSTGRES_DB: pascdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - pascnet
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    env_file: .env
+    depends_on:
+      - db
+    ports:
+      - "8501:8501"
+    networks:
+      - pascnet
+    volumes:
+      - ./instance:/app/instance
+
+volumes:
+  db_data:
+
+networks:
+  pascnet:
+    driver: bridge
